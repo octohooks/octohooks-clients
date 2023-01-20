@@ -1,4 +1,4 @@
-# Octohooks (JavaScript/TypeScript)
+# Octohooks (Node.js)
 
 ## Getting Started
 

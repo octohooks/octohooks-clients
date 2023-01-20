@@ -9,9 +9,9 @@ export class Octohooks {
 
   public readonly message: OctohooksMessage;
 
-  protected domain: string = 'http://127.0.0.1:8080';
+  // protected domain: string = 'http://127.0.0.1:8080';
 
-  constructor(protected token: string) {
+  constructor(protected token: string, protected domain: string = 'https://api.octohooks.com') {
     this.application = new OctohooksApplication(
       `${this.domain}/api/v1`,
       this.token
