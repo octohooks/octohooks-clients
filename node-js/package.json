@@ -1,6 +1,6 @@
 {
   "name": "octohooks",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Octohooks makes sending webhooks easy and reliable by offering webhook sending as a service.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

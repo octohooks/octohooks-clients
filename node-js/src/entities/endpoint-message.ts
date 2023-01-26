@@ -3,6 +3,8 @@ import { Message } from './message';
 import { Root } from './root';
 
 export interface EndpointMessage extends Root {
+  attempts: Array<{ statusCode: number; timestamp: number }>;
+
   attemptCount: number;
 
   endpoint: Endpoint;

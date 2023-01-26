@@ -7,6 +7,8 @@ export interface Endpoint extends Root {
 
   eventTypes: Array<string>;
 
+  headers: { [key: string]: string };
+
   name: string;
 
   secrets: Array<string>;

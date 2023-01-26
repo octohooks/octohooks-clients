@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Application, Endpoint } from './entities';
+import { Application, Endpoint, Message } from './entities';
 import { EndpointRequest } from './value-objects';
 
 export class Octohooks {
@@ -9,7 +9,10 @@ export class Octohooks {
 
   public readonly message: OctohooksMessage;
 
-  constructor(protected token: string, protected domain: string = 'https://api.octohooks.com') {
+  constructor(
+    protected token: string,
+    protected domain: string = 'https://api.octohooks.com'
+  ) {
     this.application = new OctohooksApplication(
       `${this.domain}/api/v1`,
       this.token
@@ -121,8 +124,8 @@ export class OctohooksMessage {
       channels: Array<string>;
       payload: any;
     }
-  ): Promise<Endpoint> {
-    const response = await axios.post<Endpoint>(
+  ): Promise<Message> {
+    const response = await axios.post<Message>(
       `${this.url}/applications/${applicationId}/messages`,
       message,
       {
