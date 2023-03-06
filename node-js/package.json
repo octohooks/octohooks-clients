@@ -1,6 +1,6 @@
 {
   "name": "octohooks",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Octohooks makes sending webhooks easy and reliable by offering webhook sending as a service.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,7 +20,7 @@
     "@types/assert": "^1.5.6",
     "@types/crypto-js": "^4.1.1",
     "@types/mocha": "^10.0.0",
-    "@types/uuid": "^9.0.0",
+    "@types/uuid": "^9.0.1",
     "assert": "^2.0.0",
     "mocha": "^10.1.0",
     "prettier": "^2.8.4",
@@ -28,7 +28,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "axios": "^1.3.3",
+    "axios": "^1.3.4",
     "crypto-js": "^4.1.1",
     "uuid": "^9.0.0"
   }

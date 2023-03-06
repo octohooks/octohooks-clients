@@ -3,28 +3,28 @@ import { Application, Endpoint, Message } from './entities';
 import { EndpointRequest } from './value-objects';
 
 export class Octohooks {
-  public readonly application: OctohooksApplication;
+  public readonly application: OctohooksApplicationClient;
 
-  public readonly endpoint: OctohooksEndpoint;
+  public readonly endpoint: OctohooksEndpointClient;
 
-  public readonly message: OctohooksMessage;
+  public readonly message: OctohooksMessageClient;
 
   constructor(
     protected token: string,
     protected domain: string = 'https://api.octohooks.com'
   ) {
-    this.application = new OctohooksApplication(
+    this.application = new OctohooksApplicationClient(
       `${this.domain}/api/v1`,
       this.token
     );
 
-    this.endpoint = new OctohooksEndpoint(`${this.domain}/api/v1`, this.token);
+    this.endpoint = new OctohooksEndpointClient(`${this.domain}/api/v1`, this.token);
 
-    this.message = new OctohooksMessage(`${this.domain}/api/v1`, this.token);
+    this.message = new OctohooksMessageClient(`${this.domain}/api/v1`, this.token);
   }
 }
 
-export class OctohooksApplication {
+export class OctohooksApplicationClient {
   constructor(protected url: string, protected token: string) {}
 
   public async create(application: {
@@ -74,7 +74,7 @@ export class OctohooksApplication {
   }
 }
 
-export class OctohooksEndpoint {
+export class OctohooksEndpointClient {
   constructor(protected url: string, protected token: string) {}
 
   public async create(
@@ -114,7 +114,7 @@ export class OctohooksEndpoint {
   }
 }
 
-export class OctohooksMessage {
+export class OctohooksMessageClient {
   constructor(protected url: string, protected token: string) {}
 
   public async create(
