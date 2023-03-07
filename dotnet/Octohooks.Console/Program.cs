@@ -2,11 +2,9 @@
 using Octohooks.net;
 using Octohooks.net.Domain.Entities;
 
-Console.WriteLine("Hello, World!");
+var octohooksClient = new OctohooksClient("AUTH_TOKEN");
 
-var octohooksClient = new OctohooksClient("hello-world");
-
-var result = octohooksClient.Message.Create("asasa", new Message()
+var result = octohooksClient.Message.Create("my-application", new Message()
 {
     Channels = new string[0],
     EventType = "user.created",
