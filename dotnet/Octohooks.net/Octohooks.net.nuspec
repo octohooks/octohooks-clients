@@ -14,6 +14,6 @@
     <title>$title$</title>
   </metadata>
   <files>
-    <file src="..\README.md" target="docs\" />
+    <file src="README.md" />
   </files>
 </package>
