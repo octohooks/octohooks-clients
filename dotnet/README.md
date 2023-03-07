@@ -7,40 +7,19 @@
 Install the package with:
 
 ```sh
-npm install octohooks
+dotnet add package Octohooks.net
 # or
-yarn add octohooks
+NuGet\Install-Package Octohooks.net
 ```
 
 ### Usage
 
-```typescript
-import { Octohooks } from 'octohooks';
+```csharp
+using Octohooks.net;
 
-const octohooks = new Octohooks('AUTH_TOKEN');
+var octohooksClient = new OctohooksClient("AUTH_TOKEN");
 
-(async () => {
-  const application = await octohooks.application.create({
-    name: 'My Application',
-    uid: 'my-application',
-  });
-
-  const endpoint = await octohooks.endpoint.create(application.id, {
-    channels: [],
-    enabled: true,
-    eventTypes: ['user.created'],
-    headers: {},
-    name: 'My Endpoint',
-    uid: 'my-endpoint',
-    url: 'https://....',
-  });
-
-  const message = await octohooks.message.create(application.id, {
-    channels: [],
-    eventType: 'user.created',
-    payload: {
-      email: 'foo.bar@example.com',
-    },
-  });
-})();
+var message = await octohooksClient.Message.Create("my-application", new Octohooks.Domain.Entities.Message {
+  Channels: new string[0]
+});
 ```

@@ -22,6 +22,7 @@ steps:
   inputs:
     command: pack
     packagesToPack: dotnet/Octohooks.net/Octohooks.net.csproj
+    includeReferencedProjects: true
 - task: DotNetCoreCLI@2
   displayName: NuGet Push
   inputs:
