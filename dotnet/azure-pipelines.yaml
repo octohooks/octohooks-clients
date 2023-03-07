@@ -23,7 +23,7 @@ steps:
     command: pack
     packagesToPack: dotnet/Octohooks.net/Octohooks.net.csproj
 - task: DotNetCoreCLI@2
-  displayName: Nuget Push
+  displayName: NuGet Push
   inputs:
     command: custom
     custom: nuget

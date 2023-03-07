@@ -4,7 +4,19 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Version>0.0.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Company>Octohooks</Company>
+    <Authors>Octohooks</Authors>
+    <Description>Octohooks makes sending webhooks easy and reliable by offering webhook sending as a service.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Octohooks.Domain\Octohooks.Domain.csproj" />
