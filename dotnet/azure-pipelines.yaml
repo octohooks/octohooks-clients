@@ -1,0 +1,39 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: Restore
+  inputs:
+    workingDirectory: dotnet
+    command: restore
+    projects: '**/*.csproj'
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    workingDirectory: dotnet
+    projects: '**/*.csproj'
+    arguments: '--configuration Release'
+- task: DotNetCoreCLI@2
+  displayName: Pack
+  inputs:
+    workingDirectory: dotnet
+    command: pack
+    packagesToPack: Octohooks.net/Octohooks.net.csproj
+- task: DotNetCoreCLI@2
+  displayName: Nuget Push
+  inputs:
+    workingDirectory: dotnet
+    command: custom
+    custom: nuget
+    arguments: push $(Build.ArtifactStagingDirectory)/*.nupkg
+      -s https://api.nuget.org/v3/index.json
+      -k $(NugetApiKey)
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()

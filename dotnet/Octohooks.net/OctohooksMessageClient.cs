@@ -14,7 +14,7 @@ namespace Octohooks.net
 
         public async Task<Message> Create(string applicationId, Message message)
         {
-            var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/${applicationId}/messages", message);
+            var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/{applicationId}/messages", message);
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {

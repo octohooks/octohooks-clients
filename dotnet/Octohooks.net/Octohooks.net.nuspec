@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <authors>Octohooks</authors>
+    <copyright>© 2023 Octohooks</copyright>
+    <description>Octohooks makes sending webhooks easy and reliable by offering webhook sending as a service.</description>
+    <id>$id$</id>
+    <license type="expression">MIT</license>
+    <readme>README.md</readme>
+    <releaseNotes></releaseNotes>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <version>$version$</version>
+    <tags></tags>
+    <title>$title$</title>
+  </metadata>
+  <files>
+    <file src="..\README.md" target="docs\" />
+  </files>
+</package>
