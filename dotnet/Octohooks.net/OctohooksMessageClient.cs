@@ -1,4 +1,4 @@
-﻿using Octohooks.Domain.Entities;
+﻿using Octohooks.net.Domain.Entities;
 using System.Net.Http.Json;
 
 namespace Octohooks.net
@@ -12,16 +12,16 @@ namespace Octohooks.net
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));   
         }
 
-        public async Task<Message> Create(string applicationId, Message message)
+        public async Task<Message?> Create(string applicationId, Message message)
         {
             var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/{applicationId}/messages", message);
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
-                throw new Exception();
+                throw new Exception("unable to create message");
             }
 
-            return message;
+            return await httpResponseMessage.Content.ReadFromJsonAsync<Message>();
         }
     }
 }

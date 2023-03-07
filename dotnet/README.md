@@ -16,10 +16,17 @@ NuGet\Install-Package Octohooks.net
 
 ```csharp
 using Octohooks.net;
+using Octohooks.net.Domain.Entities;
 
 var octohooksClient = new OctohooksClient("AUTH_TOKEN");
 
-var message = await octohooksClient.Message.Create("my-application", new Octohooks.Domain.Entities.Message {
-  Channels: new string[0]
+var message = await octohooksClient.Message.Create("my-application", new Message()
+{
+    Channels = new string[0],
+    EventType = "user.created",
+    Payload = new 
+    {
+        Email = "foo.bar@example.com"
+    }
 });
 ```
