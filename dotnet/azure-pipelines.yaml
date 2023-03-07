@@ -29,7 +29,7 @@ steps:
     custom: nuget
     arguments: push $(Build.ArtifactStagingDirectory)/*.nupkg
       -s https://api.nuget.org/v3/index.json
-      -k $(NugetApiKey)
+      -k $(NuGetApiKey)
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
