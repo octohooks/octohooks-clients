@@ -18,9 +18,15 @@ export class Octohooks {
       this.token
     );
 
-    this.endpoint = new OctohooksEndpointClient(`${this.domain}/api/v1`, this.token);
+    this.endpoint = new OctohooksEndpointClient(
+      `${this.domain}/api/v1`,
+      this.token
+    );
 
-    this.message = new OctohooksMessageClient(`${this.domain}/api/v1`, this.token);
+    this.message = new OctohooksMessageClient(
+      `${this.domain}/api/v1`,
+      this.token
+    );
   }
 }
 
@@ -106,6 +112,24 @@ export class OctohooksEndpointClient {
         },
         validateStatus: (status) => {
           return status === 200 || status === 404 ? true : false;
+        },
+      }
+    );
+
+    return response.data;
+  }
+
+  public async update(
+    applicationId: string,
+    endpointId: string,
+    endpointRequest: EndpointRequest
+  ): Promise<Endpoint> {
+    const response = await axios.put<Endpoint>(
+      `${this.url}/applications/${applicationId}/endpoints/${endpointId}`,
+      endpointRequest,
+      {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
         },
       }
     );

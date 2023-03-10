@@ -2,6 +2,10 @@
 {
     public class OctohooksClient
     {
+        public readonly OctohooksApplicationClient Application;
+
+        public readonly OctohooksEndpointClient Endpoint;
+
         public readonly OctohooksMessageClient Message;
 
         public OctohooksClient(string token) {
@@ -13,7 +17,11 @@
 
             httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 
+            Application = new OctohooksApplicationClient(httpClient);
+
             Message = new OctohooksMessageClient(httpClient);
+
+            Endpoint = new OctohooksEndpointClient(httpClient);
         } 
     }
 }
