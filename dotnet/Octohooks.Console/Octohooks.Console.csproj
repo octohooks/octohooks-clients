@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Octohooks.net" Version="1.0.1" />
+    <PackageReference Include="Octohooks.net" Version="1.0.3" />
   </ItemGroup>
 
 </Project>
