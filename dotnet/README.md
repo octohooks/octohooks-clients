@@ -1,4 +1,4 @@
-# Octohooks (DotNet)
+# Octohooks (.NET)
 
 ## Getting Started
 
