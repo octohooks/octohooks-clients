@@ -5,7 +5,6 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
     "outDir": "dist",
     "moduleResolution": "nodenext",
     "noFallthroughCasesInSwitch": true,
