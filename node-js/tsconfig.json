@@ -2,11 +2,12 @@
   "compilerOptions": {
     "declaration": true,
     "downlevelIteration": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
     "outDir": "dist",
-    "module": "commonjs",
+    "moduleResolution": "nodenext",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "strict": true,
