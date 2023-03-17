@@ -1,10 +1,9 @@
 {
   "name": "octohooks",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Octohooks makes sending webhooks easy and reliable by offering webhook sending as a service.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "lint": "prettier --write --config prettier.config.js --list-different src/**/*.ts",
