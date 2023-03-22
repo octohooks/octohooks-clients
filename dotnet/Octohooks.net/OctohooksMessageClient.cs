@@ -13,9 +13,23 @@ namespace Octohooks.net
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));   
         }
 
-        public async Task<Message?> Create(string applicationId, MessageRequest messageRequest)
+        public async Task<Message?> Create(string applicationId, MessageRequest messageRequest, string idempotencyKey = null)
         {
-            var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/{applicationId}/messages", messageRequest);
+            var httpRequestMessage = new HttpRequestMessage
+            {
+                Content = JsonContent.Create(messageRequest),
+                Method = HttpMethod.Post,
+                RequestUri = new Uri(_httpClient.BaseAddress, $"applications/{applicationId}/messages"),
+            };
+
+            httpRequestMessage.Headers.Authorization = _httpClient.DefaultRequestHeaders.Authorization;
+
+            if (!string.IsNullOrEmpty(idempotencyKey))
+            {
+                httpRequestMessage.Headers.Add("Idempotency-Key", idempotencyKey); 
+            }
+
+            var httpResponseMessage = await _httpClient.SendAsync(httpRequestMessage);
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
