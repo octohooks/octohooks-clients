@@ -2,9 +2,9 @@
 using Octohooks.net;
 using Octohooks.net.Requests;
 
-var octohooksClient = new OctohooksClient("key_w7ucyhbq936ywlsmhsrs0s663nw718h02fgh147ufxd9uqxq");
+var octohooksClient = new OctohooksClient("AUTH_TOKEN");
 
-var result = octohooksClient.Message.Create("octohooks", new MessageRequest
+var result = octohooksClient.Message.Create("my-application", new MessageRequest
 {
     Channels = new string[0],
     EventType = "user.created",
@@ -14,7 +14,3 @@ var result = octohooksClient.Message.Create("octohooks", new MessageRequest
     },
     Uid = "my-message-id"
 }).GetAwaiter().GetResult();
-
-Console.WriteLine(result.Id);
-
-Console.ReadLine();
