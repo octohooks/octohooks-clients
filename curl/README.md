@@ -13,6 +13,7 @@ curl -X 'POST' \
   -d '{
   "channels": [],
   "eventType": "user.created",
+  "uid": "my-message",
   "payload": {
       email: 'foo.bar@example.com',
    }

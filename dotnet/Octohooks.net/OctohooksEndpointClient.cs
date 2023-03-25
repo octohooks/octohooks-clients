@@ -15,7 +15,7 @@ namespace Octohooks.net
 
         public async Task<Endpoint?> Create(string applicationId, EndpointRequest endpointRequest)
         {
-            var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/{applicationId}", endpointRequest);
+            var httpResponseMessage = await _httpClient.PostAsJsonAsync($"applications/{applicationId}/endpoints", endpointRequest);
 
             if (!httpResponseMessage.IsSuccessStatusCode)
             {
