@@ -10,6 +10,8 @@ dotnet add package Octohooks.net
 
 ## Configure
 
+Configure the Octhooks Client
+
 ```csharp
 builder.Services
     .AddTransient((serviceProvider) => new OctohooksClient("key_qbj411vu4h32qnlxyuynox89ocomdj73vz4wzflj45q8ybch"));
@@ -22,7 +24,7 @@ builder.Services
 [Route("{code}/redemption")]
 public async Task<IActionResult> Post(string code)
 {
-    // This is your application ID or the user-defined ID of the application
+    // This is your application ID or the user-defined ID of your application
     // It's recommended that you create an application for each of your users and obtain the application ID from
     // their Auth Token, JWT or headers. 
     var applicationId = "my-application";
