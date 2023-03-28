@@ -14,7 +14,7 @@ namespace Octohooks.Example.Controllers
 
         public VouchersController(ILogger<VouchersController> logger, OctohooksClient octohooksClient)
         {
-            _logger = logger;
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
             _octohooksClient = octohooksClient ?? throw new ArgumentNullException(nameof(octohooksClient));
         }
@@ -23,28 +23,34 @@ namespace Octohooks.Example.Controllers
         [Route("{code}/redemption")]
         public async Task<IActionResult> Post(string code)
         {
-            var applicationId = GetApplicationId(); // Get application ID from Token, JWT, headers or a custom implementation
+            var id = RedeemVoucher(code);
 
-            // TODO
-            // This will be your own logic such as redemption of the voucher
-            // 
-            // 
-            // 
-
-            await _octohooksClient.Message.Create(applicationId, new MessageRequest
+            await _octohooksClient.Message.Create(GetApplicationIdFromToken(), new MessageRequest
             {
                 Channels = new string[] { },
                 EventType = "voucher.redeemed",
-                Payload = new { code },
-                Uid = Guid.NewGuid().ToString(),
+                Payload = new
+                {
+                    code,
+                    id,
+                },
+                Uid = id,
             });
 
-            return Accepted();
+            return Accepted(new
+            {
+                id
+            });
         }
 
-        private string GetApplicationId()
+        private string GetApplicationIdFromToken()
         {
-            return "tenant-1";
+            return "tenant-two";
+        }
+
+        private string RedeemVoucher(string code)
+        {
+            return Guid.NewGuid().ToString();
         }
     }
 }

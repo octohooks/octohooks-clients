@@ -14,7 +14,7 @@ Configure the Octhooks Client
 
 ```csharp
 builder.Services
-    .AddTransient((serviceProvider) => new OctohooksClient("key_qbj411vu4h32qnlxyuynox89ocomdj73vz4wzflj45q8ybch"));
+    .AddTransient((serviceProvider) => new OctohooksClient("AUTH_TOKEN"));
 ```
 
 ## Implement
@@ -26,8 +26,8 @@ public async Task<IActionResult> Post(string code)
 {
     // This is your application ID or the user-defined ID of your application
     // It's recommended that you create an application for each of your users and obtain the application ID from
-    // their Auth Token, JWT or headers. 
-    var applicationId = "my-application";
+    // their Auth Token, JWT, headers or a custom implementation. 
+    var applicationId = GetApplicationId();
 
     // TODO
     // This will be your own logic such as redemption of the voucher

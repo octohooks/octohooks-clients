@@ -10,7 +10,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    .AddTransient((serviceProvider) => new OctohooksClient("key_qbj411vu4h32qnlxyuynox89ocomdj73vz4wzflj45q8ybch"));
+    .AddTransient((serviceProvider) => new OctohooksClient("key_w7ucyhbq936ywlsmhsrs0s663nw718h02fgh147ufxd9uqxq"));
 
 var app = builder.Build();
 
