@@ -26,7 +26,7 @@ namespace Octohooks.Example.Controllers
             var applicationId = "my-application"; // Get application from Token, JWT, headers or custom implementation
 
             // TODO
-            //
+            // This will be your own logic such as redemption of the voucher
             // 
             // 
             // 
