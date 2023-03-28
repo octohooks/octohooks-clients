@@ -23,7 +23,7 @@ namespace Octohooks.Example.Controllers
         [Route("{code}/redemption")]
         public async Task<IActionResult> Post(string code)
         {
-            var applicationId = "my-application"; // Get application from Token, JWT, headers or custom implementation
+            var applicationId = GetApplicationId(); // Get application ID from Token, JWT, headers or a custom implementation
 
             // TODO
             // This will be your own logic such as redemption of the voucher
@@ -40,6 +40,11 @@ namespace Octohooks.Example.Controllers
             });
 
             return Accepted();
+        }
+
+        private string GetApplicationId()
+        {
+            return "tenant-1";
         }
     }
 }
