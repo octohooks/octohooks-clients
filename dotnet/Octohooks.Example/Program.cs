@@ -1,3 +1,4 @@
+using Octohooks.Example.Domain.Services;
 using Octohooks.net;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddTransient<MessageService>();
 
 builder.Services
     .AddTransient((serviceProvider) => new OctohooksClient("key_w7ucyhbq936ywlsmhsrs0s663nw718h02fgh147ufxd9uqxq"));

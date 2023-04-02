@@ -1,5 +1,9 @@
 # Octohooks.Example
 
+## Introduction
+
+![](Assets/Octohooks.png)
+
 ## Install
 
 Install the library
@@ -21,26 +25,22 @@ builder.Services
 
 ````csharp
 [HttpPost]
-[Route("{code}/redemption")]
-public async Task<IActionResult> Post(string code)
+public async Task<IActionResult> Post(MessagesPostRequest request)
 {
-    // This is your application ID or the user-defined ID of your application
-    // It's recommended that you create an application for each of your users and obtain the application ID from
-    // their Auth Token, JWT, headers or a custom implementation. 
-    var applicationId = GetApplicationId();
+    // Your application ID is either the ID assigned by the system or a custom ID chosen by you.
+    // Creating an application for each user is advisable, and acquiring the application ID can be done through the Auth Token, JWT, headers, or a personalized approach.
+    var applicationId = GetApplicationIdFromToken();
 
-    // TODO
-    // This will be your own logic such as redemption of the voucher
-    // 
-    // 
-    // 
+    // Here you can implement your own logic. For instance, we are sending an SMS in this example.
+    var message = await _messageService.SendSms(request.MobileNumber, request.Body);
 
+    // Making a request to Octohooks
     await _octohooksClient.Message.Create(applicationId, new MessageRequest
     {
         Channels = new string[] { },
-        EventType = "voucher.redeemed",
-        Payload = new { code },
-        Uid = Guid.NewGuid().ToString(),
+        EventType = "message.sent",
+        Payload = message,
+        Uid = message.Id.ToString(),
     });
 
     return Accepted();
