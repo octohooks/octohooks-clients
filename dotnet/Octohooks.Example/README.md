@@ -4,13 +4,13 @@
 
 This case involves an .NET Core API that allows clients to send SMS messages via an endpoint. Due to client demand, there is a request to implement webhook functionality in order to receive real-time notification when messages are sent and delivered.
 
-To achieve this objective, we plan to leverage Octohooks for adding webhook capabilities to our API. The proposed approach entails generating an individual application for each client in [Octohooks](https://octohooks.com), thereby enabling each client to specify one or more endpoints for receiving events/messages.
+To achieve this objective, we plan to leverage [Octohooks](https://octohooks.com) for adding webhook capabilities to our API. The proposed approach entails generating an individual application for each client in [Octohooks](https://octohooks.com), thereby enabling each client to specify one or more endpoints for receiving events/messages.
 
-![Octohooks](Assets/Octohooks.png)
+![Octohooks](Assets/diagram.png)
 
 ## Install
 
-Install the .NET Core library on your project or solution
+Install the .NET Core library on your project or solution.
 
 ```bash
 dotnet add package Octohooks.net
@@ -18,7 +18,7 @@ dotnet add package Octohooks.net
 
 ## Setup
 
-Register the `OctohooksClient` with your dependency injection container
+Register the `OctohooksClient` with your dependency injection container.
 
 ```csharp
 builder.Services
