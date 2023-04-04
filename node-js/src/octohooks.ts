@@ -1,11 +1,13 @@
 import axios from 'axios';
-import { Application, Endpoint, Message } from './entities';
+import { Application, Endpoint, EndpointMessage, Message } from './entities';
 import { EndpointRequest } from './value-objects';
 
 export class Octohooks {
   public readonly application: OctohooksApplicationClient;
 
   public readonly endpoint: OctohooksEndpointClient;
+
+  public readonly endpointMessage: OctohooksEndpointMessageClient;
 
   public readonly message: OctohooksMessageClient;
 
@@ -19,6 +21,11 @@ export class Octohooks {
     );
 
     this.endpoint = new OctohooksEndpointClient(
+      `${this.domain}/api/v1`,
+      this.token
+    );
+
+    this.endpointMessage = new OctohooksEndpointMessageClient(
       `${this.domain}/api/v1`,
       this.token
     );
@@ -152,6 +159,26 @@ export class OctohooksMessageClient {
     const response = await axios.post<Message>(
       `${this.url}/applications/${applicationId}/messages`,
       message,
+      {
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+
+    return response.data;
+  }
+}
+
+export class OctohooksEndpointMessageClient {
+  constructor(protected url: string, protected token: string) {}
+
+  public async find(
+    applicationId: string,
+    messageId: string
+  ): Promise<Array<EndpointMessage>> {
+    const response = await axios.get<Array<EndpointMessage>>(
+      `${this.url}/applications/${applicationId}/messages/${messageId}/endpoint-messages`,
       {
         headers: {
           Authorization: `Bearer ${this.token}`,
