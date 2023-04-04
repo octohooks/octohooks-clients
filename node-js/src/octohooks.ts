@@ -173,7 +173,7 @@ export class OctohooksMessageClient {
 export class OctohooksEndpointMessageClient {
   constructor(protected url: string, protected token: string) {}
 
-  public async find(
+  public async findAll(
     applicationId: string,
     messageId: string
   ): Promise<Array<EndpointMessage>> {
