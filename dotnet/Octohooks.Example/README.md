@@ -50,7 +50,7 @@ public class RefundsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post(string id)
     {
-        // We'll use the JSON Web Token(JWT) to determine the applicationId of the client making the request
+        // We'll use the JSON Web Token(JWT) to determine the applicationId of the merchant making the request
         var applicationId = GetApplicationIdFromToken();
 
         // Initiate refund via our domain service
