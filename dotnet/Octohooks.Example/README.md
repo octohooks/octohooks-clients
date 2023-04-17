@@ -47,7 +47,6 @@ public class RefundsController : ControllerBase
         _octohooksClient = octohooksClient ?? throw new ArgumentNullException(nameof(octohooksClient));
     }
 
-
     [HttpPost]
     public async Task<IActionResult> Post(string id)
     {
